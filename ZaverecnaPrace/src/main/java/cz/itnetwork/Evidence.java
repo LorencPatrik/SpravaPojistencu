@@ -49,13 +49,13 @@ public class Evidence {
      */
     public void editujPojisteneho(int zadanyIndex, String jmeno, String prijmeni, int rokNarozeni, String telCislo) {
         Pojisteny pojisteny = pojisteneOsoby.get(zadanyIndex);
-        if (jmeno.length() > 0)
+        if (!jmeno.isEmpty())
             pojisteny.setJmeno(jmeno);
-        if (prijmeni.length() > 0)
+        if (!prijmeni.isEmpty())
             pojisteny.setPrijmeni(prijmeni);
         if (rokNarozeni != -1)
             pojisteny.setRokNarozeni(rokNarozeni);
-        if (telCislo.length() > 0) // musíme otestovat i poslední podmínku - nevíme, která je prázdná....
+        if (!telCislo.isEmpty()) // musíme otestovat i poslední podmínku - nevíme, která je prázdná....
             pojisteny.setTelCislo(telCislo);
     }
 }
