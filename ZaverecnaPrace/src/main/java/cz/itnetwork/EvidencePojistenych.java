@@ -28,7 +28,6 @@ public class EvidencePojistenych {
          *   (ano také se mi to nelíbí, ale pomáhá to v orientaci mezi tabulkami vzhledem k tomu, že nám Java neumožnila vymazat konzoli).
          * - Pár dalších drobností jako třeba skloňování slova pojištěný ve výpisech dle počtu položek a doplnění velkého prvního
          *   písmena u jména a příjmení když nebude zadáno.
-         *
          */
         ObsluhaEvidence obEvidence = new ObsluhaEvidence();
         boolean pokracuj = true;
