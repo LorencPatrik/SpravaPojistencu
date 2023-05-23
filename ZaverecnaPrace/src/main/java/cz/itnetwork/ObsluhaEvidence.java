@@ -111,9 +111,12 @@ public class ObsluhaEvidence {
         }
         if (pospojovaneCislo.length() > 2) // zbylo-li nám ještě neuložené číslo dlouhé alespoň 3. číslice... (čísla se v cyklu ukládájí jen když následuje textový řetězec)
             retezceKVyhledani.add(String.valueOf(pospojovaneCislo));
-
         System.out.println("Výrazy použité k hledání:");
-        retezceKVyhledani.forEach(polozka -> System.out.print(polozka.replaceFirst("\\D", polozka.substring(0, 1).toUpperCase()) + " ")); // všechny položky, které nejsou čísla budou mít veké první písmeno (při vyhledávání vše .toLowerCase())
+        boolean carka = false;
+        for (String vyraz: retezceKVyhledani) { // všechny položky, které nejsou čísla budou mít veké první písmeno (při vyhledávání vše .toLowerCase())
+            System.out.print((carka ? ", ": "") + vyraz.replaceFirst("\\D", vyraz.substring(0, 1).toUpperCase()));
+            carka = true;
+        }
         List<Pojisteny> pojisteneOsoby = evidence.vratPojistene();
         System.out.print("\n\n" + vratLinku());
         System.out.printf("| Výsledky vyhledávání:%-46s|\n", " ");
