@@ -83,10 +83,10 @@ public class ObsluhaEvidence {
         System.out.println("\nZadejte text pro vyhledávání:");
         String zadani = sc.nextLine().trim().toLowerCase();
         String[] splitZadani;
-        if (zadani.length() > 0) {
+        if (!zadani.isEmpty()) {
             splitZadani = zadani.split("[-.,;: ]+");
         } else {
-            System.out.println("Nic nezadáno :-( Tak snad příště...");
+            System.out.println("Nic nezadáno :-( Tak snad příště...\n");
             return;
         }
         List<String> retezceKVyhledani = new ArrayList<>(); // zde se uloží všechny validní řetězce a čísla k vyhledávání
@@ -181,8 +181,8 @@ public class ObsluhaEvidence {
         int novyRokNarozeni = zadejCislo(datumDnes.getYear() - 99, datumDnes.getYear(), true);
         String noveTelCislo = zadejTel(true);
 
-        if (noveJmeno.length() == 0 && novePrijmeni.length() == 0 && noveTelCislo.length() == 0 && novyRokNarozeni == -1) {
-            System.out.println("\nNezadali jste nic k editaci... Pojištěný zůstal nezměněn.");
+        if (noveJmeno.isEmpty() && novePrijmeni.isEmpty() && noveTelCislo.isEmpty() && novyRokNarozeni == -1) {
+            System.out.println("\nNezadali jste nic k editaci... Pojištěný zůstal nezměněn.\n");
             return;
         }
         evidence.editujPojisteneho(zadanyIndex, noveJmeno, novePrijmeni, novyRokNarozeni, noveTelCislo);
@@ -244,10 +244,10 @@ public class ObsluhaEvidence {
         do {
             upravenyText = "";
             String zadanyText = sc.nextLine().trim();
-            if (povolenyPrazdny && zadanyText.length() == 0)
+            if (povolenyPrazdny && zadanyText.isEmpty())
                 return zadanyText;
             String[] splitZadani2;
-            if (zadanyText.length() > 0) {
+            if (!zadanyText.isEmpty()) {
                 splitZadani2 = zadanyText.split("[-.,;: ]+");
                 for (String polozka : splitZadani2) {
                     if (polozka.matches("\\d+"))
@@ -281,7 +281,7 @@ public class ObsluhaEvidence {
         while (!spravneZadani) {
             try {
                 textoveZadani = sc.nextLine().trim();
-                if (povolenyPrazdny && textoveZadani.length() == 0)
+                if (povolenyPrazdny && textoveZadani.isEmpty())
                     return zadani;
                 zadani = Integer.parseInt(textoveZadani);
                 if (zadani < min || zadani > max)
@@ -320,7 +320,7 @@ public class ObsluhaEvidence {
      */
     private boolean jeEvidencePrazdna() {
         List<Pojisteny> pojisteneOsoby = evidence.vratPojistene();
-        if (pojisteneOsoby.size() < 1) {
+        if (pojisteneOsoby.isEmpty()) {
             System.out.println("\nSeznam pojištěných je prázdný. Zadejte nového pojištěného...\n");
             return true;
         }
